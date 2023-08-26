@@ -29,7 +29,7 @@ pre-commit install
 
 6. Execute o projeto
 ```
-python3 src/app.py
+python3 run.py
 ```
 ___
 ***Observações:***
