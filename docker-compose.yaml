@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  api:
+    image: pedro6571/python-api-flask-restx:latest
+    container_name: todo-api
+    ports:
+      - 8080:8080
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8080
+      - ENV=local
