@@ -1,0 +1,6 @@
+name: Python 3.8 Workflow
+on: [push]
+
+jobs:
+    pytest:
+        uses: ./.github/workflows/pytest.yaml

@@ -1,6 +1,7 @@
 name: Pytest Workflow
 run-name: Pytest Workflow
-on: [push, workflow_call]
+on: [workflow_call]
+
 jobs:
   pytest:
     runs-on: ubuntu-latest
