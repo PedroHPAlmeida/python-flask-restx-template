@@ -1,0 +1,11 @@
+name: Python 3.8 Setup
+on: [workflow_call]
+
+jobs:
+  setup-python38:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python  
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
