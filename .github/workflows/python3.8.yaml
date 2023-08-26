@@ -2,8 +2,9 @@ name: Python 3.8 Workflow
 on: [push]
 
 jobs:
-  flake8:
+  lint:
     uses: ./.github/workflows/flake8.yaml
 
   pytest:
+    needs: lint
     uses: ./.github/workflows/pytest.yaml
