@@ -8,3 +8,7 @@ jobs:
   test:
     needs: lint
     uses: ./.github/workflows/pytest.yaml
+    
+  publish:
+    needs: test
+    uses: ./.github/workflows/docker-publish.yaml
