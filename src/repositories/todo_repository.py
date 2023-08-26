@@ -16,13 +16,15 @@ class TodoRepository:
         todo = data
         todo['id'] = self.counter = self.counter + 1
         self.todos.append(todo)
-        return todo
 
+
+        return    todo
     def update(self, id, data):
-        todo = self.get(id)
+        
+        todo    =     self.get(id)
         todo.update(data)
         return todo
 
-    def delete(self, id):
+    def delete(self, id)   :
         todo = self.get(id)
         self.todos.remove(todo)
