@@ -5,6 +5,6 @@ jobs:
   lint:
     uses: ./.github/workflows/flake8.yaml
 
-  pytest:
+  test:
     needs: lint
     uses: ./.github/workflows/pytest.yaml

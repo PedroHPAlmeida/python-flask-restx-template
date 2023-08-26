@@ -2,7 +2,7 @@ from src.errors import NotFoundError
 
 
 class TodoRepository:
-    def __init__(self):
+    def __init__(self)  :
         self.counter = 0
         self.todos = []
 
