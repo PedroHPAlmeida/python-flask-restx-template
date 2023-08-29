@@ -13,3 +13,8 @@ jobs:
     needs: test
     uses: ./.github/workflows/docker-publish.yaml
     secrets: inherit
+    
+  deploy:
+    needs: publish
+    uses: ./.github/workflows/deploy-beanstalk.yaml
+    secrets: inherit
