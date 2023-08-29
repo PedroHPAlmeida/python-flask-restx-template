@@ -17,6 +17,6 @@ jobs:
           application_name: python-flask
           environment_name: Python-flask-env
           version_label: python-flask-${{ github.sha }}
-          deployment_package: Dockerrun.aws
+          deployment_package: Dockerrun.aws.json
           existing_bucket_name: elasticbeanstalk-us-east-1-255310614335
           wait_for_deployment: true
