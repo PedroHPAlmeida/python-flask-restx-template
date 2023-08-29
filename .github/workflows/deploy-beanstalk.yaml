@@ -3,7 +3,7 @@ run-name: Deploy Python Beanstalk Workflow
 on: [workflow_call]
 
 jobs:
-  deploy:
+  deploy-beanstalk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,7 +13,7 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          region: ${{ env.AWS_REGION }}
+          region: ${{ vars.AWS_REGION }}
           application_name: python-flask
           environment_name: Python-flask-env
           version_label: python-flask-${{ github.sha }}
