@@ -20,7 +20,7 @@ jobs:
 
     - name: Set Docker image name
       id: set-image-name
-      run: echo "::set-output name=image_name::${{ secrets.DOCKER_HUB_USER }}/${{ github.repository }}##*/"
+      run: echo "IMAGE_NAME=${{ secrets.DOCKER_HUB_USER }}/${{ github.repository }}##*/" >> $GITHUB_OUTPUT
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.2.0
@@ -28,4 +28,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ steps.set-image-name.outputs.image_name }}:latest
+        tags: ${{ steps.set-image-name.outputs.IMAGE_NAME }}:latest
