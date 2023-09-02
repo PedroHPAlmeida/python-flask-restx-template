@@ -3,11 +3,11 @@ on: [push]
 
 jobs:
   lint:
-    uses: PedroHPAlmeida/actions-workflows/.github/workflows/python/flake8.yaml@master
+    uses: PedroHPAlmeida/actions-workflows/.github/workflows/flake8.yaml@master
     
   test:
     needs: lint
-    uses: PedroHPAlmeida/actions-workflows/.github/workflows/python/pytest.yaml@master
+    uses: PedroHPAlmeida/actions-workflows/.github/workflows/pytest.yaml@master
 
   publish:
     needs: test
