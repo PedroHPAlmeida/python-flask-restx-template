@@ -15,6 +15,7 @@ jobs:
     secrets: inherit
     
   deploy:
+    if: ${{ github.ref_name == 'master' }}
     needs: publish
     uses: PedroHPAlmeida/actions-workflows-aws/.github/workflows/beanstalk.yaml@master
     secrets: inherit
