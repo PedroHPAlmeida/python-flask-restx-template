@@ -3,17 +3,17 @@ on: [push]
 
 jobs:
   lint:
-    uses: PedroHPAlmeida/actions-workflows/.github/workflows/flake8.yaml@master
+    uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/flake8.yaml@master
     
   test:
     needs: lint
-    uses: PedroHPAlmeida/actions-workflows/.github/workflows/pytest.yaml@master
+    uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/pytest.yaml@master
 
   publish:
     needs: test
     uses: ./.github/workflows/docker-publish.yaml
     secrets: inherit
-    
+
   deploy:
     needs: publish
     uses: ./.github/workflows/deploy-beanstalk.yaml

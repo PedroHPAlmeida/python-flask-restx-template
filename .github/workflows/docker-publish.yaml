@@ -23,4 +23,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_HUB_USER }}/python-api-flask-restx:latest
+        tags: ${{ secrets.DOCKER_HUB_USER }}/${GITHUB_REPOSITORY##*/}:latest
