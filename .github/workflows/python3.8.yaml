@@ -13,8 +13,8 @@ jobs:
     needs: test
     uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
     secrets: inherit
-
+    
   deploy:
     needs: publish
-    uses: ./.github/workflows/deploy-beanstalk.yaml
+    uses: PedroHPAlmeida/actions-workflows-aws/.github/workflows/beanstalk.yaml@master
     secrets: inherit
