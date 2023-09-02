@@ -11,7 +11,7 @@ jobs:
 
   publish:
     needs: test
-    uses: ./.github/workflows/docker-publish.yaml
+    uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
     secrets: inherit
 
   deploy:
