@@ -20,3 +20,6 @@ jobs:
     needs: publish
     uses: PedroHPAlmeida/actions-workflows-aws/.github/workflows/beanstalk.yaml@master
     secrets: inherit
+    with:
+      docker-image: PedroHPAlmeida/python-flask-restx-template:${{ github.ref_name }}-${{ github.sha }}
+      container-port: 8080
