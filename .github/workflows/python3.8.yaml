@@ -10,16 +10,16 @@ jobs:
     uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/pytest.yaml@master
 
   publish:
+    uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
     if: ${{ github.ref_name == 'master' || github.ref_name == 'develop'}}
     needs: test
-    uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
     secrets: inherit
-    
+
   deploy:
     if: ${{ github.ref_name == 'master' }}
     needs: publish
     uses: PedroHPAlmeida/actions-workflows-aws/.github/workflows/beanstalk.yaml@master
     secrets: inherit
     with:
-      docker-image: PedroHPAlmeida/python-flask-restx-template:${{ github.ref_name }}-${{ github.sha }}
+      docker-image: ${{ jobs.publish.outputs.image }}
       container-port: 8080
