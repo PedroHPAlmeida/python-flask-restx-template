@@ -4,7 +4,7 @@ Abaixo está descrito o passo a passo para configurar o ambiente de desenvolvime
 
 1. Crie o ambiente virtual:
 ```
-python3 -m venv venv
+python -m venv venv
 ```
 
 2. Ative o ambiente virtual:
@@ -29,18 +29,16 @@ pre-commit install
 
 6. Execute o projeto
 ```
-python3 run.py
+python run.py
 ```
 ___
 ***Observações:***
 
 * Alguns comandos podem variar no Windows (consulte a documentação oficial das ferramentas);
-* Caso o comando `python3` não funcione, tente utilizar apenas `python`;
-* Caso o comando `pip` não funcione, tente utilizar `pip3`.
 
 ***Comandos úteis:***
 
 * `pre-commit run --all-files`: executa os hooks de pre-commit em todos os arquivos do projeto;
 * `pytest .`: executa todos os testes do projeto;
-* `python3 -m flake8 src/`: executa o flake8 em todos os arquivos dentro de **src**;
-* `python3 - m black src/`: executa o black em todos os arquivos dentro de **src**.
+* `python -m flake8 src/`: executa o flake8 em todos os arquivos dentro de **src**;
+* `python - m black src/`: executa o black em todos os arquivos dentro de **src**.
