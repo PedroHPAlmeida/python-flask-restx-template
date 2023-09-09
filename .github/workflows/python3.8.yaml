@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Bla Bla Bla
         run: |
-          echo ${{ needs.prerequisites.outputs.app_name }}
+          echo ${{ needs.prerequisites.outputs }}
 
   publish:
     uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
