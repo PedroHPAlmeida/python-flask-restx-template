@@ -5,7 +5,7 @@ jobs:
   prerequisites:
     runs-on: ubuntu-latest
     steps:
-      - uses: PedroHPAlmeida/prerequisites-action@v0.7
+      - uses: PedroHPAlmeida/prerequisites-action@v0.8
         with:
           DEFAULT_BRANCH: 'master'
           BRANCHES: 'develop'
@@ -22,8 +22,9 @@ jobs:
   publish:
     uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
     if: ${{ github.ref_name == 'master' || github.ref_name == 'develop'}}
-    needs: test
+    needs: [test, prerequisites]
     with:
+      app_name: ${{ needs.prerequisites.outputs.app_name }}
       docker_hub_user: ${{ vars.DOCKER_HUB_USER }}
     secrets:
       docker_hub_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
