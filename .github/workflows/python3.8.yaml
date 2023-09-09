@@ -4,8 +4,13 @@ on: [push]
 jobs:
   prerequisites:
     runs-on: ubuntu-latest
+
+    outputs:
+      app_name: ${{ steps.prerequisites.outputs.app_name }}
+
     steps:
       - uses: PedroHPAlmeida/prerequisites-action@v0.8
+        id: prerequisites 
         with:
           DEFAULT_BRANCH: 'master'
           BRANCHES: 'develop'
@@ -18,14 +23,6 @@ jobs:
   test:
     needs: lint
     uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/pytest.yaml@master
-
-  bla:
-    needs: prerequisites
-    runs-on: ubuntu-latest
-    steps:
-      - name: Bla Bla Bla
-        run: |
-          echo ${{ needs.prerequisites.outputs }}
 
   publish:
     uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
