@@ -2,7 +2,17 @@ name: Python 3.8 Workflow
 on: [push]
 
 jobs:
+  prerequisites:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: PedroHPAlmeida/prerequisites-action@v0.7
+        with:
+          DEFAULT_BRANCH: 'master'
+          BRANCHES: 'develop'
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB_TOKEN }}
+
   lint:
+    needs: prerequisites
     uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/flake8.yaml@master
     
   test:
@@ -25,6 +35,7 @@ jobs:
       aws_key_id: ${{ secrets.AWS_KEY_ID }}
       aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
       aws_region: ${{ secrets.AWS_REGION }}
+      aws_bucket_name: ${{ secrets.AWS_BUCKET_NAME }}
     with:
-      docker-image: ${{ secrets.DOCKER_HUB_USER }}/${REPO_NAME}:${{ github.ref_name }}-${{ github.sha }}
+      docker-image: ${{ needs.publish.outputs.image_name }}
       container-port: 8080
