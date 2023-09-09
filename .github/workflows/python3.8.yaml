@@ -19,6 +19,14 @@ jobs:
     needs: lint
     uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/pytest.yaml@master
 
+  bla:
+    needs: prerequisites
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bla Bla Bla
+        run: |
+          echo ${{ needs.prerequisites.outputs.app_name }}
+
   publish:
     uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
     if: ${{ github.ref_name == 'master' || github.ref_name == 'develop'}}
