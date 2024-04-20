@@ -36,7 +36,7 @@ jobs:
 
   deploy:
     needs: publish
-    uses: PedroHPAlmeida/deploy-docker-render@master
+    uses: PedroHPAlmeida/deploy-docker-render@v0.6
     with:
       render-api-key: ${{ secrets.RENDER_API_KEY }}
       service-id: ${{ secrets.RENDER_SERVICE_ID }}
