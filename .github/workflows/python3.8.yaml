@@ -42,5 +42,5 @@ jobs:
         uses: PedroHPAlmeida/deploy-docker-render@master
         with:
           render-api-key: ${{ secrets.RENDER_API_KEY }}
-          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          service-id: ${{ vars.RENDER_SERVICE_ID }}
           image-url: ${{ needs.publish.outputs.image_name }}
