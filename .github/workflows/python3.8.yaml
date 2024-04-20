@@ -18,14 +18,14 @@ jobs:
 
   lint:
     needs: prerequisites
-    uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/flake8.yaml@master
+    uses: gh-actions-workflows/python-workflows/.github/workflows/flake8.yaml@master
     
   test:
     needs: lint
-    uses: PedroHPAlmeida/actions-workflows-python/.github/workflows/pytest.yaml@master
+    uses: gh-actions-workflows/python-workflows/.github/workflows/pytest.yaml@master
 
   publish:
-    uses: PedroHPAlmeida/actions-workflows-docker/.github/workflows/docker-publish.yaml@master
+    uses: gh-actions-workflows/docker-workflows/.github/workflows/docker-publish.yaml@master
     if: ${{ github.ref_name == 'master' || github.ref_name == 'develop'}}
     needs: [test, prerequisites]
     with:
@@ -35,14 +35,9 @@ jobs:
       docker_hub_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
   deploy:
-    if: ${{ github.ref_name == 'master' }}
     needs: publish
-    uses: PedroHPAlmeida/actions-workflows-aws/.github/workflows/beanstalk.yaml@master
-    secrets:
-      aws_key_id: ${{ secrets.AWS_KEY_ID }}
-      aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-      aws_region: ${{ secrets.AWS_REGION }}
-      aws_bucket_name: ${{ secrets.AWS_BUCKET_NAME }}
+    uses: gh-actions-workflows/deploy-docker-render@0.1
     with:
-      docker-image: ${{ needs.publish.outputs.image_name }}
-      container-port: 8080
+      render-api-key: ${{ secrets.RENDER_API_KEY }}
+      service-id: ${{ secrets.RENDER_SERVICE_ID }}
+      image-url: ${{ needs.publish.outputs.image_name }}
