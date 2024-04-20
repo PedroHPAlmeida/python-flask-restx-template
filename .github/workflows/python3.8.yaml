@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Render
-        uses: PedroHPAlmeida/deploy-docker-render@v0.6
+        uses: PedroHPAlmeida/deploy-docker-render@master
         with:
           render-api-key: ${{ secrets.RENDER_API_KEY }}
           service-id: ${{ secrets.RENDER_SERVICE_ID }}
