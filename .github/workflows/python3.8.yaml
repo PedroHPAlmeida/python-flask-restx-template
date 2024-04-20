@@ -36,7 +36,7 @@ jobs:
 
   deploy:
     needs: publish
-    uses: gh-actions-workflows/deploy-docker-render@v0.3
+    uses: gh-actions-workflows/deploy-docker-render@v0.4
     with:
       render-api-key: ${{ secrets.RENDER_API_KEY }}
       service-id: ${{ secrets.RENDER_SERVICE_ID }}
