@@ -35,6 +35,7 @@ jobs:
       docker_hub_password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
   deploy:
+    if: ${{ github.ref_name == 'master' }}
     needs: publish
     runs-on: ubuntu-latest
     steps:
