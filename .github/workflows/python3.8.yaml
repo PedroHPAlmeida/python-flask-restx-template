@@ -41,6 +41,6 @@ jobs:
       - name: Deploy to Render
         uses: PedroHPAlmeida/deploy-docker-render@master
         with:
-          deploy-hook: ${{ vars.RENDER_DEPLOY_HOOK }}
+          deploy-hook: ${{ secrets.RENDER_DEPLOY_HOOK }}
           render-api-key: ${{ secrets.RENDER_API_KEY }}
           image-url: ${{ needs.publish.outputs.image_name }}
