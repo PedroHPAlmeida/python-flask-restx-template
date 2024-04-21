@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to Render
-        uses: PedroHPAlmeida/deploy-docker-render@master
+        uses: gh-actions-workflows/deploy-docker-render@master
         with:
           deploy-hook: ${{ secrets.RENDER_DEPLOY_HOOK }}
           render-api-key: ${{ secrets.RENDER_API_KEY }}
